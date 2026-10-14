@@ -1,6 +1,6 @@
-# 🚀 DocMind AI - Production Deployment Guide
+# 🚀 PlaceMate AI - Production Deployment Guide
 
-This guide provides simple, step-by-step instructions to deploy **DocMind AI** to production with **free-tier hosting** (Render + Vercel + Supabase/Neon PostgreSQL).
+This guide provides simple, step-by-step instructions to deploy **PlaceMate AI** to production with **free-tier hosting** (Render + Vercel + Supabase/Neon PostgreSQL).
 
 ---
 
@@ -14,22 +14,18 @@ This guide provides simple, step-by-step instructions to deploy **DocMind AI** t
 
 ---
 
-## Step 1: Push Code to GitHub
+## Step 1: GitHub Repository (Already Pushed!)
 
-1. Open your terminal in the root project folder:
-   ```bash
-   git init
-   git add .
-   git commit -m "feat: production ready DocMind AI"
-   ```
-2. Create a new repository on [GitHub](https://github.com/new).
-3. Push your repository:
-   ```bash
-   git branch -M main
-   git remote add origin https://github.com/YOUR_USERNAME/docmind-ai.git
-   git push -u origin main
-   ```
-   *(Note: The root `.gitignore` will automatically prevent `.env` and uploaded student resumes from being uploaded!)*
+Your project is already set up and pushed to GitHub:
+`https://github.com/hari-krishnan427/placemate-AI`
+
+Whenever you make future updates locally, just run:
+```bash
+git add .
+git commit -m "your message"
+git push origin main
+```
+*(The root `.gitignore` will automatically prevent `.env` secrets and uploaded student resumes from ever leaking!)*
 
 ---
 
