@@ -63,7 +63,9 @@ function CareerAIMentor({ initialCompany = "", initialRole = "", initialTab = "m
                 document.documentElement.requestFullscreen().catch(() => {});
                 setIsFullscreen(true);
             }
-        } catch (e) {}
+        } catch {
+            // Fullscreen request ignored or unsupported
+        }
     };
 
     const exitBrowserFullscreen = () => {
@@ -72,7 +74,9 @@ function CareerAIMentor({ initialCompany = "", initialRole = "", initialTab = "m
                 document.exitFullscreen().catch(() => {});
                 setIsFullscreen(false);
             }
-        } catch (e) {}
+        } catch {
+            // Exit fullscreen ignored or unsupported
+        }
     };
 
     const toggleFullscreenMode = () => {
@@ -99,7 +103,7 @@ function CareerAIMentor({ initialCompany = "", initialRole = "", initialTab = "m
             .replace(/\\ge\b/g, ">=")
             .replace(/\\ne\b/g, "!=")
             .replace(/\\times\b/g, "x")
-            .replace(/\$([^\$]+)\$/g, "$1")
+            .replace(/\$([^$]+)\$/g, "$1")
             .replace(/\$/g, "");
     };
 
@@ -670,7 +674,9 @@ function CareerAIMentor({ initialCompany = "", initialRole = "", initialTab = "m
         if (recognitionRef.current) {
             try {
                 recognitionRef.current.stop();
-            } catch (e) {}
+            } catch {
+                // Ignore stop error
+            }
         }
         setIsListening(false);
     };
@@ -853,7 +859,9 @@ function CareerAIMentor({ initialCompany = "", initialRole = "", initialTab = "m
         if (coachRecognitionRef.current) {
             try {
                 coachRecognitionRef.current.stop();
-            } catch (e) {}
+            } catch {
+                // Ignore stop error
+            }
         }
         setIsCoachListening(false);
         if (coachTimerRef.current) clearInterval(coachTimerRef.current);

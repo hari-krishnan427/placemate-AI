@@ -224,7 +224,7 @@ function AICareerChatbot({ user, setActivePage, onStartMockTest, onStartIntervie
             }
             // Bullet list item
             if (line.trim().startsWith("* ") || line.trim().startsWith("- ")) {
-                const cleanItem = line.trim().replace(/^[\*\-]\s+/, "");
+                const cleanItem = line.trim().replace(/^[*-]\s+/, "");
                 return (
                     <li key={idx} className="chat-bullet-li">
                         {renderInlineFormatting(cleanItem)}

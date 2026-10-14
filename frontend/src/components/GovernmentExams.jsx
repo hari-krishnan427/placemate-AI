@@ -293,7 +293,7 @@ function GovernmentExams({ setActivePage }) {
 
         // Projected cutoff benchmark
         let expectedCutoffPercent = mockTestData.expectedCutoffPercent || 68;
-        let cutoffStatus = "Cleared";
+        let cutoffStatus;
         if (percentage >= expectedCutoffPercent) {
             cutoffStatus = `Comfortably Cleared Projected Cutoff (${expectedCutoffPercent}%)`;
         } else if (percentage >= expectedCutoffPercent - 8) {
