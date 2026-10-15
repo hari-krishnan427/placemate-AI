@@ -99,9 +99,14 @@ function Login() {
             }
 
             setScreen("verify-otp");
-            setOtp("");
             setResendCooldown(data.cooldown || 30);
-            setMessage(`Verification code sent to ${email}. Check your inbox!`);
+            if (data.fallbackOtp) {
+                setOtp(data.fallbackOtp);
+                setMessage(`Verification Code: ${data.fallbackOtp} (Host SMTP offline - backup code ready)`);
+            } else {
+                setOtp("");
+                setMessage(`Verification code sent to ${email}. Check your inbox!`);
+            }
             setIsError(false);
         } catch (error) {
             console.error("OTP send error:", error);

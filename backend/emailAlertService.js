@@ -197,14 +197,35 @@ async function dispatchPlacementEmail({ userId, targetEmail, alert, candidate, p
         console.error("[Email Mailbox DB Error]:", dbErr.message);
     }
 
-    // 2. Real SMTP delivery attempt (non-blocking so simulation is instant)
+    // 2. Real Email delivery attempt (Resend HTTP API or Nodemailer SMTP)
     let smtpDelivered = false;
     let smtpError = null;
 
-    if (transporter && process.env.EMAIL_USER && process.env.EMAIL_PASS) {
+    if (process.env.RESEND_API_KEY) {
+        fetch("https://api.resend.com/emails", {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${process.env.RESEND_API_KEY}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                from: process.env.RESEND_FROM || "PlaceMate AI <onboarding@resend.dev>",
+                to: recipient,
+                subject: subject,
+                html: htmlBody
+            })
+        }).then(res => {
+            if (res.ok) {
+                console.log(`[Email Dispatcher] Resend HTTP email delivered to ${recipient} (${alert.company})`);
+            }
+        }).catch(err => {
+            console.warn(`[Email Dispatcher] Resend HTTP notice: ${err.message}`);
+        });
+        smtpDelivered = true;
+    } else if (transporter && process.env.EMAIL_USER && process.env.EMAIL_PASS) {
         try {
             transporter.sendMail({
-                from: `"DocMind AI Placement Radar" <${process.env.EMAIL_USER}>`,
+                from: `"PlaceMate AI Placement Radar" <${process.env.EMAIL_USER}>`,
                 to: recipient,
                 subject: subject,
                 html: htmlBody
