@@ -231,7 +231,7 @@ function Profile({ setActivePage, onProfileUpdate }) {
                     <div className="empty-icon-large">🎓</div>
                     <h2>No Student Profile Built Yet</h2>
                     <p className="profile-empty-desc">
-                        DocMind AI creates your real career profile automatically by extracting your actual skills, degree, CGPA, and projects from your resume.
+                        PlaceMate AI creates your real career profile automatically by extracting your actual skills, degree, CGPA, and projects from your resume.
                     </p>
                     <div className="profile-steps-box">
                         <h4>How to build your profile in 10 seconds:</h4>

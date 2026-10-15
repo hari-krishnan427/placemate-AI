@@ -309,7 +309,7 @@ async function askDocumentAI(rawText, question, documentName) {
     }
 
     const prompt = `
-You are DocMind AI, a helpful, intelligent student career assistant.
+You are PlaceMate AI, a helpful, intelligent student career assistant.
 The student has uploaded a document named "${documentName}".
 Answer the student's question accurately, politely, and strictly based on the text provided below.
 If the information is not in the document, truthfully state that the document does not mention it.

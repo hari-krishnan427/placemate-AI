@@ -1,5 +1,5 @@
 // ======================================================
-// DOCMIND AI - GOVERNMENT EXAMS DOMAIN ENGINE & PAPER SYNTHESIZER
+// PLACEMATE AI - GOVERNMENT EXAMS DOMAIN ENGINE & PAPER SYNTHESIZER
 // High-Fidelity Domain Differentiation, 20-Question Speed Drill,
 // & 100-Question Parallel Multi-Section Exam Simulation
 // ======================================================

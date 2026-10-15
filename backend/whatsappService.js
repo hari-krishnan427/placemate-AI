@@ -1,5 +1,5 @@
 /**
- * DocMind AI - Automated Dedicated WhatsApp Notification Service
+ * PlaceMate AI - Automated Dedicated WhatsApp Notification Service
  * 
  * Delivers targeted, category-specific alerts to student WhatsApp numbers:
  * 1. 🏢 IT MNCs & Mass Hiring (Zoho, TCS, Hexaware)
@@ -53,9 +53,9 @@ ${categoryIcon} *Company / Org:* ${alert.company}
 ⏳ *Deadline:* Registration closes in *~${hours} Hours*!
 
 👉 *Direct Application Link:* ${alert.apply_url}
-📝 *Practice Free Timed Mock Test:* http://localhost:5173
+📝 *Practice Free Timed Mock Test:* https://placemate-ai.vercel.app
 
-_Automated Alert sent via DocMind AI Engine (Batch ${batch} Verified)_`;
+_Automated Alert sent via PlaceMate AI Engine (Batch ${batch} Verified)_`;
 
     return message;
 }

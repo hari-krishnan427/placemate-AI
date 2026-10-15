@@ -2,7 +2,7 @@ const fs = require("fs");
 
 // Test each engine independently
 async function testEngines() {
-    console.log("=== Testing All Job Engines for DocMind AI ===");
+    console.log("=== Testing All Job Engines for PlaceMate AI ===");
 
     // 1. LinkedIn Guest Stream
     try {

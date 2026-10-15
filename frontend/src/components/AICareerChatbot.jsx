@@ -46,7 +46,7 @@ function AICareerChatbot({ user, setActivePage, onStartMockTest, onStartIntervie
                     {
                         id: `msg-init-${Date.now()}`,
                         role: "assistant",
-                        content: data.welcomeMessage || "Hello! I'm your DocMind Career Copilot. Ask me anything about your resume, eligible companies, interview patterns, or practice mock tests!",
+                        content: data.welcomeMessage || "Hello! I'm your PlaceMate Career Copilot. Ask me anything about your resume, eligible companies, interview patterns, or practice mock tests!",
                         actions: [
                             {
                                 type: "quick_prompt",
@@ -275,7 +275,7 @@ function AICareerChatbot({ user, setActivePage, onStartMockTest, onStartIntervie
                     </div>
                     <div>
                         <div className="copilot-name-row">
-                            <h2 className="copilot-title">DocMind Career AI Copilot</h2>
+                            <h2 className="copilot-title">PlaceMate Career AI Copilot</h2>
                             <span className="copilot-online-badge">⚡ Real-Time Placement Mentor</span>
                         </div>
                         <p className="copilot-subtitle">
@@ -335,7 +335,7 @@ function AICareerChatbot({ user, setActivePage, onStartMockTest, onStartIntervie
 
                             <div className={`chat-bubble ${isUser ? "user-bubble" : "bot-bubble"}`}>
                                 <div className="bubble-header">
-                                    <span className="bubble-sender">{isUser ? "You (Candidate)" : "DocMind Career Copilot"}</span>
+                                    <span className="bubble-sender">{isUser ? "You (Candidate)" : "PlaceMate Career Copilot"}</span>
                                     <span className="bubble-time">{msg.timestamp}</span>
                                 </div>
 

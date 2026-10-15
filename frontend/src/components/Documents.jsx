@@ -694,7 +694,7 @@ function Documents({ setActivePage }) {
                                     <div className="qa-empty-chat">
                                         <span className="qa-empty-icon">🤖</span>
                                         <p>
-                                            Ask any question about this document. DocMind AI answers strictly based on the text inside this file!
+                                            Ask any question about this document. PlaceMate AI answers strictly based on the text inside this file!
                                         </p>
                                     </div>
                                 ) : (
@@ -704,7 +704,7 @@ function Documents({ setActivePage }) {
                                                 <strong>You:</strong> {item.question}
                                             </div>
                                             <div className="qa-ai-bubble">
-                                                <strong>DocMind AI:</strong>
+                                                <strong>PlaceMate AI:</strong>
                                                 <div className="qa-answer-text">{item.answer}</div>
                                             </div>
                                         </div>

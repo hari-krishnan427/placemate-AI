@@ -26,7 +26,7 @@
         console.log("\n2. Testing Indeed India Public Stream (Coimbatore)...");
         const res = await fetch("https://in.indeed.com/rss?q=Mechanical&l=Coimbatore", {
             headers: {
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) DocMind-Job-Radar/1.0"
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) PlaceMate-Job-Radar/1.0"
             }
         });
         console.log("Indeed India RSS Status:", res.status);

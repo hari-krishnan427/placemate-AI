@@ -1,5 +1,5 @@
 // ======================================================
-// DOCMIND AI - GOVERNMENT EXAMS INTELLIGENCE & SIMULATOR SERVICE
+// PLACEMATE AI - GOVERNMENT EXAMS INTELLIGENCE & SIMULATOR SERVICE
 // Comprehensive Syllabus, Eligibility & Age Radar, Direct Tracker,
 // & Full Authentic Examination Arena
 // ======================================================

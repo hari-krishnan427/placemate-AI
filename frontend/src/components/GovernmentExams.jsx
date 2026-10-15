@@ -439,7 +439,7 @@ function GovernmentExams({ setActivePage }) {
         if (!emailModalExam) return;
         setEmailSending(true);
         try {
-            const targetEmail = alertEmailInput.trim() || candidateData?.email || "student.demo@docmind.ai";
+            const targetEmail = alertEmailInput.trim() || candidateData?.email || "student.demo@placemate.ai";
             const res = await fetch(`${API}/api/alerts/send-circular-email`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -838,7 +838,7 @@ function GovernmentExams({ setActivePage }) {
                                 <span className="research-pulsing-icon">🔬</span>
                             </div>
                             <div className="research-status-texts">
-                                <span className="research-badge-tag">DOCMIND AI • ON-DEMAND EXAM INTELLIGENCE</span>
+                                <span className="research-badge-tag">PLACEMATE AI • ON-DEMAND EXAM INTELLIGENCE</span>
                                 <h2 className="research-main-title">
                                     Researching Official Pattern & PYQs for: <br />
                                     <span className="highlight-target-exam">{researchingExamTitle || "Government Examination"}</span>
@@ -886,7 +886,7 @@ function GovernmentExams({ setActivePage }) {
                                 <span className="launcher-badge">🎯 Authentic Government Exam Arena</span>
                                 <h2>Practice ANY Indian Government Examination On-Demand</h2>
                                 <p>
-                                    Select from top featured examinations or pick from any of the {exams.length} live government notifications. DocMind AI dynamically researches the historical pattern, syllabus stages, marking scheme, and generates an authentic 15+ question PYQ simulation.
+                                    Select from top featured examinations or pick from any of the {exams.length} live government notifications. PlaceMate AI dynamically researches the historical pattern, syllabus stages, marking scheme, and generates an authentic 15+ question PYQ simulation.
                                 </p>
                             </div>
 
@@ -1475,7 +1475,7 @@ function GovernmentExams({ setActivePage }) {
                                 <div style={{ background: "#ecfdf5", border: "1px solid #a7f3d0", borderRadius: "8px", padding: "14px", textAlign: "center", color: "#065f46" }}>
                                     <span style={{ fontSize: "20px", display: "block", marginBottom: "4px" }}>✓</span>
                                     <strong>Official circular briefing successfully dispatched!</strong>
-                                    <p style={{ margin: "4px 0 0 0", fontSize: "12px" }}>Check your inbox and your DocMind Placement Mailbox.</p>
+                                    <p style={{ margin: "4px 0 0 0", fontSize: "12px" }}>Check your inbox and your PlaceMate Placement Mailbox.</p>
                                 </div>
                             ) : (
                                 <div className="form-group" style={{ marginBottom: "16px" }}>
@@ -1531,7 +1531,7 @@ function GovernmentExams({ setActivePage }) {
                             </span>
                             <h2 className="exam-mode-title">{practiceModalExam.title}</h2>
                             <p className="exam-mode-subtitle">
-                                Select your practice mode. DOCMIND AI custom-synthesizes the paper adhering to official board negative marking and domain qualification rules.
+                                Select your practice mode. PLACEMATE AI custom-synthesizes the paper adhering to official board negative marking and domain qualification rules.
                             </p>
 
                             {/* Domain & Qualification Differentiation Indicator */}

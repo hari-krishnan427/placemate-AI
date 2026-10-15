@@ -32,10 +32,10 @@ git push origin main
 ## Step 2: Set Up Free Cloud PostgreSQL (Neon / Supabase)
 
 1. Go to [Neon.tech](https://neon.tech) (or [Supabase](https://supabase.com)).
-2. Sign up and click **"Create Project"** (name it `docmind-db`).
+2. Sign up and click **"Create Project"** (name it `placemate-db`).
 3. Copy your **PostgreSQL Connection String**. It looks like this:
    ```
-   postgresql://docmind_owner:pass123@ep-cool-fog-12345.ap-southeast-1.neon.tech/docmind_db?sslmode=require
+   postgresql://placemate_owner:pass123@ep-cool-fog-12345.ap-southeast-1.neon.tech/placemate_db?sslmode=require
    ```
 
 ---
@@ -45,7 +45,7 @@ git push origin main
 1. Go to [Render.com](https://render.com) and click **New +** → **Web Service**.
 2. Connect your GitHub repository.
 3. Configure settings:
-   - **Name**: `docmind-backend` (or your choice)
+   - **Name**: `placemate-backend` (or your choice)
    - **Root Directory**: `backend`
    - **Environment**: `Node`
    - **Build Command**: `npm install`
@@ -53,15 +53,15 @@ git push origin main
 4. Add **Environment Variables** in Render's dashboard:
    - `NODE_ENV`: `production`
    - `DATABASE_URL`: *(Paste your connection string from Step 2)*
-   - `SESSION_SECRET`: *(A random 32+ character string, e.g. `DocMind_Session_Prod_99xK72mP4vL`)*
-   - `OTP_SECRET`: *(A random 32+ character string, e.g. `DocMind_OTP_Prod_4nQ81zKp91Lm`)*
+   - `SESSION_SECRET`: *(A random 32+ character string, e.g. `PlaceMate_Session_Prod_99xK72mP4vL`)*
+   - `OTP_SECRET`: *(A random 32+ character string, e.g. `PlaceMate_OTP_Prod_4nQ81zKp91Lm`)*
    - `GEMINI_API_KEY`: *(Your Google AI Studio API key)*
    - `FRONTEND_URL`: `https://your-frontend.vercel.app` *(You can update this after Step 4)*
    - `EMAIL_USER`: *(Your email for OTP & alerts)*
    - `EMAIL_PASS`: *(Your Gmail 16-character App Password)*
 5. Click **Create Web Service**.
-6. When deployment finishes, copy your live backend URL (e.g. `https://docmind-backend.onrender.com`).
-7. Test it by opening `https://docmind-backend.onrender.com/health` in your browser. You should see `{"status":"ok"}`!
+6. When deployment finishes, copy your live backend URL (e.g. `https://placemate-backend.onrender.com`).
+7. Test it by opening `https://placemate-backend.onrender.com/health` in your browser. You should see `{"status":"ok"}`!
 
 ---
 
@@ -74,9 +74,9 @@ git push origin main
    - **Root Directory**: Click "Edit" and choose `frontend`
 4. Add **Environment Variable**:
    - **Key**: `VITE_API_BASE_URL`
-   - **Value**: `https://docmind-backend.onrender.com` *(Your Render URL from Step 3, without a trailing slash)*
+   - **Value**: `https://placemate-backend.onrender.com` *(Your Render URL from Step 3, without a trailing slash)*
 5. Click **Deploy**.
-6. Once deployed, copy your live frontend URL (e.g. `https://docmind-ai.vercel.app`).
+6. Once deployed, copy your live frontend URL (e.g. `https://placemate-ai.vercel.app`).
 
 ---
 
@@ -84,10 +84,10 @@ git push origin main
 
 1. Return to **Render** → Your backend web service → **Environment Variables**.
 2. Update `FRONTEND_URL` to match your actual live Vercel URL:
-   `FRONTEND_URL = https://docmind-ai.vercel.app`
+   `FRONTEND_URL = https://placemate-ai.vercel.app`
 3. Render will automatically redeploy with the exact CORS allowed origin!
 
 ---
 
 ## 🎉 Done!
-Your **DocMind AI Career Platform** is now live on the internet, secure, grounded in real student data, and accessible from any phone or laptop in the world!
+Your **PlaceMate AI Career Platform** is now live on the internet, secure, grounded in real student data, and accessible from any phone or laptop in the world!

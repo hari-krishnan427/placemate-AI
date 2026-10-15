@@ -1,5 +1,5 @@
 /**
- * DocMind AI - Career & Placement AI Copilot Service
+ * PlaceMate AI - Career & Placement AI Copilot Service
  * 
  * Interactive AI career chat companion that:
  * 1. Analyzes the candidate's active parsed resume (Degree, Branch, CGPA, Batch, Skills, Projects)
@@ -195,9 +195,9 @@ async function handleCareerChatMessage({ message, history = [], userId, pool }) 
 
     // Build grounding context for Gemini
     const contextPrompt = `
-You are the "DocMind AI Career Copilot", an elite, supportive, highly intelligent career advisor, placement mentor, and interview prep partner for Indian college students and job seekers.
+You are the "PlaceMate AI Career Copilot", an elite, supportive, highly intelligent career advisor, placement mentor, and interview prep partner for Indian college students and job seekers.
 
-CANDIDATE'S ACTIVE RESUME PROFILE (FROM DOCMIND VAULT):
+CANDIDATE'S ACTIVE RESUME PROFILE (FROM PLACEMATE VAULT):
 - Candidate Name: ${candidate.fullName}
 - Degree: ${candidate.degree} (${candidate.branch})
 - Institution: ${candidate.institution}
@@ -300,7 +300,7 @@ function generateLocalFallbackResponse(message, candidate, eligibleList, mention
     if (msg.includes("eligible") || msg.includes("resume") || msg.includes("qualify") || msg.includes("company")) {
         const top3 = eligibleList.slice(0, 4);
         let reply = `### 🎯 Resume Eligibility Audit for ${candidate.fullName}\n\n`;
-        reply += `I've analyzed your **${candidate.degree} (${candidate.branch})** profile from your DocMind Vault with **${candidate.cgpa} CGPA** (Batch: **${candidate.graduationYear}**).\n\n`;
+        reply += `I've analyzed your **${candidate.degree} (${candidate.branch})** profile from your PlaceMate Vault with **${candidate.cgpa} CGPA** (Batch: **${candidate.graduationYear}**).\n\n`;
 
         if (top3.length > 0) {
             reply += `Based on your verified skills in **${candidate.skills.slice(0, 5).join(", ")}**, you are **100% eligible** for the following active recruitment drives:\n\n`;
@@ -391,7 +391,7 @@ function generateLocalFallbackResponse(message, candidate, eligibleList, mention
 
     // 3. Default General Mentorship
     return {
-        reply: `### 👋 Hi ${firstName}! I'm your DocMind Career Copilot.\n\n` +
+        reply: `### 👋 Hi ${firstName}! I'm your PlaceMate Career Copilot.\n\n` +
                `I have direct access to your verified resume profile:\n` +
                `- **Qualification:** ${candidate.degree} in ${candidate.branch} (${candidate.institution})\n` +
                `- **Academic Standing:** ${candidate.cgpa} CGPA • Batch ${candidate.graduationYear}\n` +

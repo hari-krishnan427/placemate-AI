@@ -1,5 +1,5 @@
 // ======================================================
-// DOCMIND AI - CAREER AI MENTOR SERVICE
+// PLACEMATE AI - CAREER AI MENTOR SERVICE
 // Authentic Company PYQ Vault, 20-Question Mock Test Simulator + Coding Arena,
 // Dynamic AI Voice Interviewer, & Real-Time Code Evaluation
 // ======================================================
@@ -335,7 +335,7 @@ RETURN VALID JSON ONLY (No markdown formatting or code backticks):
             else if (cleaned.startsWith("```")) cleaned = cleaned.replace(/^```/, "").replace(/```$/, "").trim();
 
             const parsed = JSON.parse(cleaned);
-            const enriched = { ...parsed, source: "DocMind AI Live Recruitment Intelligence" };
+            const enriched = { ...parsed, source: "PlaceMate AI Live Recruitment Intelligence" };
             pyqCache.set(normalized, enriched);
             return enriched;
         }
@@ -422,7 +422,7 @@ function buildGenericCompanyPYQs(companyQuery, role = "Software Engineer") {
                 conceptsTested: ["Adaptability", "Commitment", "Team Collaboration"]
             }
         ],
-        source: "DocMind Authentic Question Bank"
+        source: "PlaceMate Authentic Question Bank"
     };
 }
 
@@ -494,7 +494,7 @@ function buildAdaptiveQuestionSet(company, role) {
         {
             id: 6,
             category: "Logical Reasoning",
-            question: "In a certain code language, 'DOCMIND' is written as 'EQENKPF'. How will 'CAREER' be written in that same code?",
+            question: "In a certain code language, 'PLACEMATE' is written as 'RNCEGOCVG'. How will 'CAREER' be written in that same code?",
             options: ["ECTGGT", "ECUGGT", "DBSFFS", "EDTGHT"],
             correctIndex: 0,
             explanation: "Each letter is shifted forward by +2 positions: C(+2)->E, A(+2)->C, R(+2)->T, E(+2)->G, E(+2)->G, R(+2)->T. Result: ECTGGT."

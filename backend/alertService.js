@@ -1,5 +1,5 @@
 /**
- * DocMind AI - Final Year Placement Radar & Career Alerts Service
+ * PlaceMate AI - Final Year Placement Radar & Career Alerts Service
  * 
  * Specifically engineered for final year engineering and college students (Batch 2026 & 2027).
  * Features:
@@ -382,9 +382,9 @@ function generateWhatsAppShareText(alert, candidate) {
 ⏳ *Deadline Notice:* Form closes in ~${hours} Hours! Don't miss the link.
 
 🔗 *Direct Apply Link:* ${alert.apply_url}
-📝 *Practice Free Timed Mock Test:* http://localhost:5173
+📝 *Practice Free Timed Mock Test:* https://placemate-ai.vercel.app
 
-_Forwarded via DocMind AI Placement Radar (Verified for Batch ${candidate.graduationYear})_`;
+_Forwarded via PlaceMate AI Placement Radar (Verified for Batch ${candidate.graduationYear})_`;
 
     return text;
 }

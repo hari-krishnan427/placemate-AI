@@ -110,7 +110,7 @@ function Login() {
             setIsError(false);
         } catch (error) {
             console.error("OTP send error:", error);
-            setMessage("Unable to connect to DocMind backend server");
+            setMessage("Unable to connect to PlaceMate backend server");
             setIsError(true);
         } finally {
             setLoading(false);
@@ -279,8 +279,8 @@ function Login() {
         setLoading(true);
         setMessage("Signing in with verified demo student profile...");
         setIsError(false);
-        setEmail("student.demo@docmind.ai");
-        setPassword("docmind2026");
+        setEmail("student.demo@placemate.ai");
+        setPassword("placemate2026");
 
         try {
             const response = await fetch(`${API}/auth/login`, {
@@ -288,8 +288,8 @@ function Login() {
                 credentials: "include",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    email: "student.demo@docmind.ai",
-                    password: "docmind2026"
+                    email: "student.demo@placemate.ai",
+                    password: "placemate2026"
                 })
             });
 
@@ -423,7 +423,7 @@ function Login() {
                         <div className="auth-brand-logo-badge">
                             <span className="brand-logo-emoji">🧠</span>
                         </div>
-                        <h1 className="auth-brand-name">DocMind AI</h1>
+                        <h1 className="auth-brand-name">PlaceMate AI</h1>
                         <p className="auth-brand-subtitle">Placement Intelligence Platform</p>
                     </div>
 
@@ -569,7 +569,7 @@ function Login() {
                         {screen === "register" && (
                             <div className="auth-form-content">
                                 <div className="auth-card-header">
-                                    <h2 className="auth-card-title">Join DocMind AI</h2>
+                                    <h2 className="auth-card-title">Join PlaceMate AI</h2>
                                     <p className="auth-card-desc">
                                         Enter your email to receive a secure 6-digit verification code.
                                     </p>

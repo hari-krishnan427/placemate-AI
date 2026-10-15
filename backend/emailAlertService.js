@@ -1,5 +1,5 @@
 /**
- * DocMind AI - Automated Placement Email Dispatcher & Live Mailbox Simulator
+ * PlaceMate AI - Automated Placement Email Dispatcher & Live Mailbox Simulator
  * 
  * Features:
  * 1. Rich HTML email generation with academic eligibility shield & 1-night prep blueprint
@@ -51,7 +51,7 @@ function formatPlacementEmail(alert, candidate) {
     <tr>
       <td style="background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%); padding: 28px; text-align: left; color: #ffffff;">
         <div style="display: inline-block; padding: 4px 12px; background: rgba(255,255,255,0.15); border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.8px; color: #a5b4fc; margin-bottom: 10px;">
-          DOCMIND AI PLACEMENT RADAR &bull; BATCH ${batch}
+          PLACEMATE AI PLACEMENT RADAR &bull; BATCH ${batch}
         </div>
         <h1 style="margin: 0 0 6px 0; font-size: 22px; font-weight: 800; color: #ffffff;">${alert.company}</h1>
         <p style="margin: 0; font-size: 14px; color: #cbd5e1;">${alert.title}</p>
@@ -131,9 +131,9 @@ function formatPlacementEmail(alert, candidate) {
     <!-- Footer -->
     <tr>
       <td style="background: #f8fafc; border-top: 1px solid #e2e8f0; padding: 16px 24px; font-size: 11px; color: #94a3b8; text-align: center;">
-        You received this automated placement alert because you enabled notifications in DocMind AI.
+        You received this automated placement alert because you enabled notifications in PlaceMate AI.
         <br>
-        DocMind AI &bull; Autonomous Placement Intelligence Engine
+        PlaceMate AI &bull; Autonomous Placement Intelligence Engine
       </td>
     </tr>
 

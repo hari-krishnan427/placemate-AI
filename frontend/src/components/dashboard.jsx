@@ -315,7 +315,7 @@ function Dashboard({ setActivePage, user }) {
                         <li className="checklist-item done">
                             <span className="checklist-icon">✅</span>
                             <div>
-                                <strong>Create DocMind AI Account</strong>
+                                <strong>Create PlaceMate AI Account</strong>
                                 <p>Secured with two-factor email OTP authentication.</p>
                             </div>
                         </li>

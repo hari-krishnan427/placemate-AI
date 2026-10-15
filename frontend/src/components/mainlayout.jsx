@@ -64,6 +64,16 @@ function MainLayout({ user, onLogout }) {
         setActivePage("AI Interviewer");
     };
 
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    const toggleMobileMenu = () => {
+        setIsMobileMenuOpen((prev) => !prev);
+    };
+
+    const closeMobileMenu = () => {
+        setIsMobileMenuOpen(false);
+    };
+
     return (
         <div className="app-layout">
             <Sidebar
@@ -71,6 +81,8 @@ function MainLayout({ user, onLogout }) {
                 setActivePage={setActivePage}
                 user={currentUser}
                 onLogout={onLogout}
+                isMobileOpen={isMobileMenuOpen}
+                onCloseMobile={closeMobileMenu}
             />
 
             <div className="main-content">
@@ -78,6 +90,8 @@ function MainLayout({ user, onLogout }) {
                     activePage={activePage}
                     user={currentUser}
                     onLogout={onLogout}
+                    isMobileMenuOpen={isMobileMenuOpen}
+                    onToggleMobileMenu={toggleMobileMenu}
                 />
 
                 <main className="content-container">

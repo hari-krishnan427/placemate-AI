@@ -1,5 +1,5 @@
 /**
- * DocMind AI - Universal Multi-Engine Opportunity & Govt Exam Fetcher
+ * PlaceMate AI - Universal Multi-Engine Opportunity & Govt Exam Fetcher
  * 
  * Implements 6 Uncapped Ingestion Layers:
  * 1. Meta-Aggregators (Google Jobs, Indeed India, Jooble/Adzuna)
@@ -424,7 +424,7 @@ async function fetchLiveCorporateJobs() {
     // STREAM A: OffCampusJobs4u
     try {
         const res = await fetch("https://offcampusjobs4u.com/feed/", {
-            headers: { "User-Agent": "DocMind-Job-Radar/1.0" },
+            headers: { "User-Agent": "PlaceMate-Job-Radar/1.0" },
             signal: AbortSignal.timeout(6000)
         });
         if (res.ok) {
@@ -472,7 +472,7 @@ async function fetchLiveCorporateJobs() {
     // STREAM B: Remotive
     try {
         const res = await fetch("https://remotive.com/api/remote-jobs?limit=40", {
-            headers: { "User-Agent": "DocMind-Job-Radar/1.0" },
+            headers: { "User-Agent": "PlaceMate-Job-Radar/1.0" },
             signal: AbortSignal.timeout(6000)
         });
         if (res.ok) {
@@ -509,7 +509,7 @@ async function fetchLiveCorporateJobs() {
     // STREAM C: WeWorkRemotely
     try {
         const res = await fetch("https://weworkremotely.com/categories/remote-programming-jobs.rss", {
-            headers: { "User-Agent": "DocMind-Job-Radar/1.0" },
+            headers: { "User-Agent": "PlaceMate-Job-Radar/1.0" },
             signal: AbortSignal.timeout(6000)
         });
         if (res.ok) {
@@ -549,7 +549,7 @@ async function fetchLiveCorporateJobs() {
     // STREAM D: RemoteOK
     try {
         const res = await fetch("https://remoteok.com/api", {
-            headers: { "User-Agent": "DocMind/1.0" },
+            headers: { "User-Agent": "PlaceMate/1.0" },
             signal: AbortSignal.timeout(6000)
         });
         if (res.ok) {
@@ -602,7 +602,7 @@ async function fetchLiveGovtExams() {
     for (const url of feeds) {
         try {
             const res = await fetch(url, {
-                headers: { "User-Agent": "DocMind-Govt-Radar/1.0" },
+                headers: { "User-Agent": "PlaceMate-Govt-Radar/1.0" },
                 signal: AbortSignal.timeout(6000)
             });
 

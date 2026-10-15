@@ -75,7 +75,7 @@ app.use(express.json());
 app.get(["/", "/health", "/api/health"], (req, res) => {
     res.json({
         status: "ok",
-        service: "DocMind AI Career Platform API",
+        service: "PlaceMate AI Career Platform API",
         environment: process.env.NODE_ENV || "development",
         uptimeSeconds: Math.floor(process.uptime()),
         timestamp: new Date().toISOString()
@@ -199,7 +199,7 @@ async function initDatabase() {
                 apply_url TEXT NOT NULL,
                 description TEXT,
                 exam_stages JSONB DEFAULT '[]'::jsonb,
-                source VARCHAR(100) DEFAULT 'DocMind Live Feed',
+                source VARCHAR(100) DEFAULT 'PlaceMate Live Feed',
                 is_active BOOLEAN DEFAULT TRUE,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
@@ -207,30 +207,32 @@ async function initDatabase() {
         console.log("Database initialized with required tables and columns.");
 
         // Ensure demo student account exists for frictionless 1-click login
-        const demoUserCheck = await pool.query("SELECT id FROM users WHERE email = $1", ["student.demo@docmind.ai"]);
-        if (demoUserCheck.rows.length === 0) {
-            const demoHash = await bcrypt.hash("docmind2026", 10);
-            const uRes = await pool.query(
-                "INSERT INTO users (email, password_hash) VALUES ($1, $2) RETURNING id",
-                ["student.demo@docmind.ai", demoHash]
-            );
-            await pool.query(
-                `INSERT INTO student_profiles (user_id, full_name, email, degree, branch, institution, graduation_year, cgpa, skills)
-                 VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
-                 ON CONFLICT (user_id) DO NOTHING`,
-                [
-                    uRes.rows[0].id,
-                    "Demo Student (Final Year)",
-                    "student.demo@docmind.ai",
-                    "B.E. Computer Science & Engineering",
-                    "Computer Science",
-                    "Anna University Affiliated College",
-                    2026,
-                    8.45,
-                    JSON.stringify(["JavaScript", "React", "Node.js", "Java", "SQL", "Data Structures", "Algorithms", "Git", "REST APIs", "Python"])
-                ]
-            );
-            console.log("Guaranteed demo student profile seeded for frictionless access.");
+        for (const demoEmail of ["student.demo@placemate.ai", "student.demo@docmind.ai"]) {
+            const demoUserCheck = await pool.query("SELECT id FROM users WHERE email = $1", [demoEmail]);
+            if (demoUserCheck.rows.length === 0) {
+                const demoHash = await bcrypt.hash(demoEmail.includes("placemate") ? "placemate2026" : "docmind2026", 10);
+                const uRes = await pool.query(
+                    "INSERT INTO users (email, password_hash) VALUES ($1, $2) RETURNING id",
+                    [demoEmail, demoHash]
+                );
+                await pool.query(
+                    `INSERT INTO student_profiles (user_id, full_name, email, degree, branch, institution, graduation_year, cgpa, skills)
+                     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+                     ON CONFLICT (user_id) DO NOTHING`,
+                    [
+                        uRes.rows[0].id,
+                        "Demo Student (Final Year)",
+                        demoEmail,
+                        "B.E. Computer Science & Engineering",
+                        "Computer Science",
+                        "Anna University Affiliated College",
+                        2026,
+                        8.45,
+                        JSON.stringify(["JavaScript", "React", "Node.js", "Java", "SQL", "Data Structures", "Algorithms", "Git", "REST APIs", "Python"])
+                    ]
+                );
+                console.log(`Guaranteed demo student profile seeded for ${demoEmail}.`);
+            }
         }
 
         // Fetch live opportunities directly from real internet streams if empty
@@ -268,7 +270,7 @@ app.use(
 
         secret: process.env.SESSION_SECRET,
 
-        name: "docmind.sid",
+        name: "placemate.sid",
 
         resave: false,
 
@@ -1588,7 +1590,7 @@ ${raw_text.substring(0, 3000)}`;
                     finalTitle = parsed.title || finalTitle || "Career Opportunity";
                     finalOrg = parsed.organization || finalOrg || "Direct Hiring";
                     finalSkills = parsed.required_skills || finalSkills;
-                    finalApplyUrl = parsed.apply_url || finalApplyUrl || "https://docmind.ai";
+                    finalApplyUrl = parsed.apply_url || finalApplyUrl || "https://placemate.ai";
                     finalDesc = parsed.description || finalDesc;
                 } catch (aiErr) {
                     console.log("Raw text AI extraction fallback:", aiErr.message);
@@ -1624,7 +1626,7 @@ ${raw_text.substring(0, 3000)}`;
                     JSON.stringify(finalSkills),
                     salary_or_stipend,
                     deadline ? new Date(deadline) : null,
-                    finalApplyUrl || "https://docmind.ai",
+                    finalApplyUrl || "https://placemate.ai",
                     finalDesc,
                     JSON.stringify(exam_stages || []),
                     "Dynamic Ingest API"
@@ -1671,7 +1673,7 @@ app.post(
                 : "Open until filled";
 
             const message = 
-`🚀 *DocMind AI Career Alert*
+`🚀 *PlaceMate AI Career Alert*
 💼 *${opp.title}*
 🏢 *${opp.organization}*
 📍 *Location:* ${opp.location} (${opp.work_mode})
@@ -1680,7 +1682,7 @@ app.post(
 
 🔗 *Apply Directly:* ${opp.apply_url}
 
-_Sent via DocMind AI Career Intelligence_`;
+_Sent via PlaceMate AI Career Intelligence_`;
 
             const encodedMessage = encodeURIComponent(message);
             const whatsappUrl = phone 
@@ -2767,9 +2769,8 @@ app.post(
                 }
 
 
-                res.clearCookie(
-                    "docmind.sid"
-                );
+                res.clearCookie("placemate.sid");
+                res.clearCookie("docmind.sid");
 
 
                 res.json({
@@ -2798,7 +2799,7 @@ app.get(
     (req, res) => {
 
         res.send(
-            "DocMind Backend is running"
+            "PlaceMate Backend is running"
         );
 
     }
@@ -2961,7 +2962,7 @@ app.get("/api/mentor/chat/init", async (req, res) => {
         res.json({
             candidate,
             eligiblePreviewCount: eligibleList.length,
-            welcomeMessage: `### 👋 Hi ${firstName}! I'm your DocMind Career Copilot.\n\n` +
+            welcomeMessage: `### 👋 Hi ${firstName}! I'm your PlaceMate Career Copilot.\n\n` +
                            `I've loaded your **${candidate.degree} (${candidate.branch})** profile from your Vault with **${candidate.cgpa} CGPA** (Batch **${candidate.graduationYear}**).\n\n` +
                            `I have direct access to your verified skills: **${candidate.skills.slice(0, 5).join(", ")}**.\n\n` +
                            `How can I help you today? You can ask me to **check your eligible companies**, **break down any company's interview rounds & questions**, or **launch an instant timed mock test**!`,
@@ -3135,7 +3136,7 @@ app.get("/api/govt-exams/document-matches", async (req, res) => {
         if (!userId) {
             // Graceful fallback to student demo user or first user for frictionless access
             const fallbackUser = await pool.query(
-                `SELECT id FROM users WHERE email = 'student.demo@docmind.ai' UNION SELECT id FROM users ORDER BY id ASC LIMIT 1`
+                `SELECT id FROM users WHERE email = 'student.demo@placemate.ai' UNION SELECT id FROM users WHERE email = 'student.demo@docmind.ai' UNION SELECT id FROM users ORDER BY id ASC LIMIT 1`
             );
             if (fallbackUser.rows.length > 0) {
                 userId = fallbackUser.rows[0].id;
@@ -3160,7 +3161,7 @@ app.post("/api/govt-exams/update-dv-profile", async (req, res) => {
         let userId = req.session.user?.id;
         if (!userId) {
             const fallbackUser = await pool.query(
-                `SELECT id FROM users WHERE email = 'student.demo@docmind.ai' UNION SELECT id FROM users ORDER BY id ASC LIMIT 1`
+                `SELECT id FROM users WHERE email = 'student.demo@placemate.ai' UNION SELECT id FROM users WHERE email = 'student.demo@docmind.ai' UNION SELECT id FROM users ORDER BY id ASC LIMIT 1`
             );
             if (fallbackUser.rows.length > 0) {
                 userId = fallbackUser.rows[0].id;
@@ -3311,13 +3312,13 @@ app.post("/api/alerts/send-circular-email", async (req, res) => {
     try {
         const userId = req.session?.user?.id || req.session?.userId || null;
         const { recipientEmail, examId, title, organization, deadline, salary_or_stipend, apply_url, description } = req.body;
-        const targetEmail = recipientEmail || "student.demo@docmind.ai";
+        const targetEmail = recipientEmail || "student.demo@placemate.ai";
 
         const subject = `🏛️ Official Exam Circular: ${organization} - ${title}`;
         const htmlBody = `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff;">
                 <div style="background: linear-gradient(135deg, #1e293b, #0f172a); color: white; padding: 20px; border-radius: 8px; text-align: center;">
-                    <h2 style="margin: 0; font-size: 20px;">🏛️ DocMind AI Statutory Circular Alert</h2>
+                    <h2 style="margin: 0; font-size: 20px;">🏛️ PlaceMate AI Statutory Circular Alert</h2>
                     <p style="margin: 6px 0 0 0; font-size: 13px; color: #94a3b8;">Official Indian Government Recruitment Briefing</p>
                 </div>
                 <div style="padding: 20px 0;">
@@ -3338,7 +3339,7 @@ app.post("/api/alerts/send-circular-email", async (req, res) => {
                     </div>
                 </div>
                 <div style="border-top: 1px solid #e2e8f0; padding-top: 12px; font-size: 12px; color: #94a3b8; text-align: center;">
-                    DocMind AI Career Copilot • Document Vault Verified
+                    PlaceMate AI Career Copilot • Document Vault Verified
                 </div>
             </div>
         `;
@@ -3347,7 +3348,7 @@ app.post("/api/alerts/send-circular-email", async (req, res) => {
         if (transporter) {
             try {
                 await transporter.sendMail({
-                    from: `"DocMind AI Placement Radar" <${process.env.EMAIL_USER || "noreply@docmind.ai"}>`,
+                    from: `"PlaceMate AI Placement Radar" <${process.env.EMAIL_USER || "noreply@placemate.ai"}>`,
                     to: targetEmail,
                     subject,
                     html: htmlBody

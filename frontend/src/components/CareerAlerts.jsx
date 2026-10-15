@@ -442,7 +442,7 @@ function CareerAlerts({ onStartMockTest, onStartInterview, setActivePage }) {
                                     onChange={(e) => setOptInConsent(e.target.checked)}
                                 />
                                 <span>
-                                    I grant permission to DocMind AI to automatically dispatch placement briefings, 1-night prep kits, and midnight deadline alerts to this email.
+                                    I grant permission to PlaceMate AI to automatically dispatch placement briefings, 1-night prep kits, and midnight deadline alerts to this email.
                                 </span>
                             </label>
                         </div>
@@ -917,7 +917,7 @@ function CareerAlerts({ onStartMockTest, onStartInterview, setActivePage }) {
                                             <div className="reader-subject">{selectedEmail.subject}</div>
                                             <div className="reader-meta">
                                                 <div>
-                                                    <strong>From:</strong> DocMind Placement Radar &lt;radar@docmind.ai&gt;
+                                                    <strong>From:</strong> PlaceMate Placement Radar &lt;radar@placemate.ai&gt;
                                                 </div>
                                                 <div>
                                                     <strong>To:</strong> {selectedEmail.recipient_email}

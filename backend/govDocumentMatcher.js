@@ -1,5 +1,5 @@
 /**
- * DocMind AI - Multi-Document Government Exam Matcher & DV Readiness Engine
+ * PlaceMate AI - Multi-Document Government Exam Matcher & DV Readiness Engine
  * 
  * Audits candidate's Document Vault (10th marksheet, degree, caste cert, domicile, ID proof, skill certs)
  * and student profile against 500+ Indian Government Exam Circulars.

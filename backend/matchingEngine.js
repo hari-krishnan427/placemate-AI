@@ -1,5 +1,5 @@
 /**
- * DocMind AI - Career Matching Engine (Version 3)
+ * PlaceMate AI - Career Matching Engine (Version 3)
  * 
  * Intelligent two-phase matching algorithm:
  * Phase 1: Hard Eligibility Gatekeeper (Degree, Branch, Graduation Year, CGPA)

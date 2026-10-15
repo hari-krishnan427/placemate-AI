@@ -1,12 +1,22 @@
-function Navbar({ activePage, user, onLogout }) {
+function Navbar({ activePage, user, onLogout, onToggleMobileMenu, isMobileMenuOpen }) {
     const displayName = user?.fullName || (user?.email ? user.email.split("@")[0] : "Student");
     const userInitial = displayName.charAt(0).toUpperCase();
 
     return (
         <header className="navbar">
             <div className="navbar-left">
-                <h2 className="navbar-title">{activePage}</h2>
-                <span className="navbar-tagline">DocMind AI Career Intelligence</span>
+                <button
+                    className="mobile-menu-toggle"
+                    onClick={onToggleMobileMenu}
+                    aria-label="Toggle navigation menu"
+                    title="Menu"
+                >
+                    <span className="hamburger-icon">{isMobileMenuOpen ? "✕" : "☰"}</span>
+                </button>
+                <div className="navbar-title-group">
+                    <h2 className="navbar-title">{activePage}</h2>
+                    <span className="navbar-tagline">PlaceMate AI Career Intelligence</span>
+                </div>
             </div>
 
             <div className="navbar-right">
@@ -26,10 +36,10 @@ function Navbar({ activePage, user, onLogout }) {
                     <button
                         className="btn-logout"
                         onClick={onLogout}
-                        title="Sign Out of DocMind AI"
+                        title="Sign Out of PlaceMate AI"
                     >
                         <span>🚪</span>
-                        <span>Sign Out</span>
+                        <span className="logout-text">Sign Out</span>
                     </button>
                 )}
             </div>
