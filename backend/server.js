@@ -476,7 +476,40 @@ async function sendOTPEmail(email, otp, purpose) {
 </html>
     `;
 
-    // 1. Try Resend HTTP API (Port 443 - NEVER blocked by cloud hosts like Render)
+    // 1. Try Brevo (Sendinblue) HTTP API (Uses HTTPS Port 443 - NEVER blocked by cloud hosts like Render)
+    if (process.env.BREVO_API_KEY) {
+        try {
+            const brevoRes = await fetch("https://api.brevo.com/v3/smtp/email", {
+                method: "POST",
+                headers: {
+                    "api-key": process.env.BREVO_API_KEY,
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    sender: {
+                        name: "PlaceMate AI",
+                        email: process.env.EMAIL_USER || "harikrishnanboopalan2@gmail.com"
+                    },
+                    to: [{ email: email }],
+                    subject: subject,
+                    htmlContent: htmlContent
+                })
+            });
+
+            if (brevoRes.ok) {
+                console.log(`[Email Dispatcher] Brevo HTTP API successfully delivered OTP to real inbox: ${email}`);
+                return { success: true, provider: "brevo" };
+            } else {
+                const brevoErr = await brevoRes.json().catch(() => ({}));
+                console.warn("[Email Dispatcher] Brevo API error response:", brevoErr);
+            }
+        } catch (brevoErr) {
+            console.warn("[Email Dispatcher] Brevo HTTP request failed:", brevoErr.message);
+        }
+    }
+
+    // 2. Try Resend HTTP API (Port 443 - fallback HTTP option)
     if (process.env.RESEND_API_KEY) {
         try {
             const resendRes = await fetch("https://api.resend.com/emails", {

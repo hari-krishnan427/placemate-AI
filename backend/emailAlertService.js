@@ -197,11 +197,38 @@ async function dispatchPlacementEmail({ userId, targetEmail, alert, candidate, p
         console.error("[Email Mailbox DB Error]:", dbErr.message);
     }
 
-    // 2. Real Email delivery attempt (Resend HTTP API or Nodemailer SMTP)
+    // 2. Real Email delivery attempt (Brevo HTTP API, Resend HTTP API, or Nodemailer SMTP)
     let smtpDelivered = false;
     let smtpError = null;
 
-    if (process.env.RESEND_API_KEY) {
+    if (process.env.BREVO_API_KEY) {
+        fetch("https://api.brevo.com/v3/smtp/email", {
+            method: "POST",
+            headers: {
+                "api-key": process.env.BREVO_API_KEY,
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                sender: {
+                    name: "PlaceMate AI",
+                    email: process.env.EMAIL_USER || "harikrishnanboopalan2@gmail.com"
+                },
+                to: [{ email: recipient }],
+                subject: subject,
+                htmlContent: htmlBody
+            })
+        }).then(res => {
+            if (res.ok) {
+                console.log(`[Email Dispatcher] Brevo HTTP email delivered to ${recipient} (${alert.company})`);
+            } else {
+                res.json().then(e => console.warn(`[Email Dispatcher] Brevo response notice:`, e)).catch(() => {});
+            }
+        }).catch(err => {
+            console.warn(`[Email Dispatcher] Brevo HTTP notice: ${err.message}`);
+        });
+        smtpDelivered = true;
+    } else if (process.env.RESEND_API_KEY) {
         fetch("https://api.resend.com/emails", {
             method: "POST",
             headers: {
